@@ -1,0 +1,26 @@
+html {
+    height: 100%;
+    background-color: #fafafa;
+}
+.Register {
+    font-family: "Poppins", sans-serif;
+    // width: 280px;
+    padding: 20px;
+    box-shadow: 1px 1px 47px -14px rgba(0, 0, 0, 0.75);
+    color: rgb(77, 74, 74);
+}
+.form-control {
+    width: 100%;
+}
+.error {
+    color: red;
+}
+.form-text {
+    font-size: 13px;
+    white-space: initial;
+}
+@media only screen and (min-width: 600px) {
+    .Register {
+        width: 350px;
+    }
+}

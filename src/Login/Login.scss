@@ -1,0 +1,28 @@
+.Login {
+    font-family: "Poppins", sans-serif;
+    width: 280px;
+    padding: 20px;
+    box-shadow: 1px 1px 47px -14px rgba(0, 0, 0, 0.75);
+    color: rgb(77, 74, 74);
+    margin-top: 50px;
+    animation: fadeIn ease 2.5s;
+}
+.moments{
+    font-family:'Cookie', cursive ;
+    font-size: 50px;
+    animation: fadeIn ease 2.5s;
+}
+@keyframes fadeIn {
+    0% {opacity:0;}
+    50% {opacity:0;}
+    100% {opacity:1;}
+    }
+
+@media only screen and (min-width: 600px) {
+    .Login{
+        width: 350px;
+    }
+    .form-control {
+        width: 300px;
+    }
+}
