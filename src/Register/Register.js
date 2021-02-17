@@ -1,35 +1,34 @@
-import React from 'react'
+import { React, useState } from 'react'
 import './Register.scss'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { registerSchema } from './register.schema'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import Animation from '../Animation/Animation';
+import { UserService } from '../services/user.service';
 function Register() {
 
     const history = useHistory()
+    const [success, setSuccess] = useState(false)
 
-    function submit(values) {
-        console.log(values)
-        fetch('http://localhost:4000/user', {
-            method: 'Put',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(values)
-        }).then(res => {
-            if (res.status === 201) {
+
+   async function submit(values) {
+        const register = await UserService.register(values)
+        if (register.status === 201) {
+            setSuccess(true)  //if true - display success message 
+            setTimeout(() => {
                 history.push('./login')
-                return
-            }
-            console.log('failure')
-        })
-
+            }, 2500);
+            return
+        }
+        console.log('failure')
     }
+
+
     return (
         <div className="Register container" >
             <h2 className=" text-center">Sign Up!</h2>
             <Formik
-                initialValues={{ username: '', email: '', password: '', confirm_password:'', agreeToTerms: false }}
+                initialValues={{ username: '', email: '', password: '', confirm_password: '', agreeToTerms: false }}
                 validationSchema={registerSchema}
                 onSubmit={submit}>
                 <Form >
@@ -39,29 +38,33 @@ function Register() {
                         <ErrorMessage className="error" name="username" component="div" />
                     </div>
                     <div className="form-group mb-3 " >
-                        <label htmlFor="email">Email:</label>
+                        <label htmlFor="email">Email</label>
                         <Field id="email" name="email" className="form-control" type="email" />
                         <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         <ErrorMessage className="error" name="email" component="div" />
                     </div>
                     <div className="form-group mb-3 " >
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor="password">Password</label>
                         <Field id="password" name="password" className="form-control" type="password" />
-                        <ErrorMessage name="password" component="div" />
+                        <ErrorMessage className="error" name="password" component="div" />
                     </div>
                     <div className="form-group mb-3 " >
-                        <label htmlFor="confirm_password">Confirm Password:</label>
+                        <label htmlFor="confirm_password">Confirm Password</label>
                         <Field id="confirm_password" name="confirm_password" className="form-control" type="password" />
-                        <ErrorMessage name="confirm_password" component="div" />
+                        <ErrorMessage className="error" name="confirm_password" component="div" />
                     </div>
                     <div className="form-group mb-3 form-check" >
                         <Field className="form-check-input" id="agreeToTerms" name="agreeToTerms" type="checkbox" />
                         <label htmlFor="agreeToTerms" className="form-check-label">Agree to terms</label>
-                        <ErrorMessage className="error" name="agree To Terms" component="div" />
+                        <ErrorMessage className="error" name="agreeToTerms" component="div" />
                     </div>
                     <div className="form-group " >
-                        <button type="submit" className="btn btn-primary btn-lg">Sign-Up</button>
+                        {success ? <div className="alert alert-success" role="alert">Success! please wait...</div> :
+                            <button type="submit" className="btn btn-primary  btn-block" >Sign-Up</button>
+                        }
                     </div>
+                    <hr className="mt-4" />
+                    <p>already have an account? <Link to='./Login'>Login</Link></p>
                 </Form>
             </Formik>
             <Animation />

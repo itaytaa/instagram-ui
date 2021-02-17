@@ -4,6 +4,7 @@ import * as yup from 'yup';
 
 export const registerSchema = yup.object().shape({
     username: yup.string()
+        .trim()
         .min(3, "Too Short!")
         .max(60, "Too Long")
         .required()
@@ -21,6 +22,7 @@ export const registerSchema = yup.object().shape({
             })
         }),
     email: yup.string()
+        .trim()
         .max(100)
         .email()
         .required()
@@ -38,11 +40,13 @@ export const registerSchema = yup.object().shape({
             })
         }),
     password: yup.string()
+        .trim()
         .min(6, "Too Short!")
         .max(26, "Too Long!")
         .required(),
     confirm_password: yup.string()
+        .trim()
         .oneOf([yup.ref("password")], "Password's not match")
         .required(),
-    agreeToTerms: yup.mixed().oneOf([true])
+    agreeToTerms: yup.mixed().oneOf([true], "You nust agree to terms")
 });
