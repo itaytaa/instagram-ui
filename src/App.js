@@ -1,19 +1,24 @@
 
 import './App.scss';
-import { useEffect } from 'react';
-import { Switch, Route,useHistory } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { Switch, Route, useHistory } from 'react-router-dom'
 import Header from './Header/Header';
 import Register from './Register/Register';
 import Feed from './Feed/Feed';
 import Login from './Login/Login';
 import { UserService } from './services/user.service';
+import { UserContext } from './user-context'
+import PostCreate from './PostCreate/PostCreate';
+import { withRouter } from 'react-router'
+import PostPage from './PostPage/PostPage';
+import Profile from './Profile/Profile';
 
 
 
+function App({ location }) {
 
-
-function App() {
   const history = useHistory()
+  const [user, setUser] = useState({})
 
   useEffect(() => {
     async function getMe() {
@@ -21,7 +26,9 @@ function App() {
         const user = await UserService.me()
         if (!user) {
           history.push('/login')
+          return;
         }
+        setUser(user)
       } catch (err) {
         console.log(err)
       }
@@ -29,27 +36,46 @@ function App() {
     getMe()
   }, [history])
 
+  const urlPathes = ['/login', '/Login', '/Register', '/register']
+
+
+  function isLogged() {
+    return Boolean(Object.keys(user).length);
+  }
 
   return (
+    <UserContext.Provider value={{ user, setUser }}>
+      <div className="app-container d-flex flex-column sm-reverse  ">
 
-    <div className="App">
-      <Header />
-      <div className="container">
-        <Switch>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/" exact>
-            <Feed />
-          </Route>
-        </Switch>
+        {!urlPathes.includes(location.pathname) && isLogged() && <Header />}
+
+        <div className="container App-container flex-grow-1">
+          <Switch>
+          
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/post/create">
+              <PostCreate />
+            </Route>
+            <Route path="/post/:id" >
+              <PostPage/>
+            </Route>
+            <Route path="/profile/:username">
+              <Profile />
+            </Route>
+            <Route path="/" >
+              <Feed />
+            </Route>
+          </Switch>
+        </div>
       </div>
-    </div>
+    </UserContext.Provider>
 
   );
 }
 
-export default App;
+export default withRouter(App);

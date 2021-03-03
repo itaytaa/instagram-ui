@@ -5,11 +5,14 @@ import { registerSchema } from './register.schema'
 import { useHistory, Link } from 'react-router-dom'
 import Animation from '../Animation/Animation';
 import { UserService } from '../services/user.service';
+
+
 function Register() {
 
     const history = useHistory()
     const [success, setSuccess] = useState(false)
-
+  
+    
 
    async function submit(values) {
         const register = await UserService.register(values)
@@ -17,6 +20,7 @@ function Register() {
             setSuccess(true)  //if true - display success message 
             setTimeout(() => {
                 history.push('./login')
+              
             }, 2500);
             return
         }
@@ -26,7 +30,7 @@ function Register() {
 
     return (
         <div className="Register container" >
-            <h2 className=" text-center">Sign Up!</h2>
+            <h2 className="text-center">Sign Up!</h2>
             <Formik
                 initialValues={{ username: '', email: '', password: '', confirm_password: '', agreeToTerms: false }}
                 validationSchema={registerSchema}
@@ -60,11 +64,11 @@ function Register() {
                     </div>
                     <div className="form-group " >
                         {success ? <div className="alert alert-success" role="alert">Success! please wait...</div> :
-                            <button type="submit" className="btn btn-primary  btn-block" >Sign-Up</button>
+                            <button type="submit" className="btn btn-primary btn-lg btn-block" >Sign-Up</button>
                         }
                     </div>
                     <hr className="mt-4" />
-                    <p>already have an account? <Link to='./Login'>Login</Link></p>
+                    <p>already have an account? <Link to='./login'>Login</Link></p>
                 </Form>
             </Formik>
             <Animation />

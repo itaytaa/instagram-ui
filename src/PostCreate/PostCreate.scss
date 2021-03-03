@@ -1,0 +1,41 @@
+.PostCreate {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+
+    justify-content: space-around;
+}
+
+.PostCreate .title {
+    font-family: "Roboto", sans-serif;
+}
+.chooseButton {
+    width: 150px;
+    font-size: 15px;
+}
+.chosenImage {
+width:300px;
+height:300px;
+object-fit: fill;
+
+    align-self: center;
+}
+
+.form {
+    // box-sizing: content-box;
+    align-items: center;
+    justify-content: center;
+// height:100vh;
+    
+}
+.submit-btn {
+    background: none;
+    border: 1px solid;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.submit-btn:hover {
+    color: rgb(10, 10, 175);
+}

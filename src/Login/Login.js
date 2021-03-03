@@ -1,7 +1,7 @@
 
 
 import Animation from '../Animation/Animation';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Form, Formik, Field } from 'formik';
 import Cookies from 'js-cookie';
 import { useHistory, Link } from 'react-router-dom';
@@ -10,41 +10,49 @@ import { loginSchema } from './login.schema';
 import { AiOutlineUser } from 'react-icons/ai';
 import { BsLock } from "react-icons/bs";
 import { UserService } from '../services/user.service';
+import { UserContext } from '../user-context';
 
 
 
 
 function Login() {
+
+   
+
+
     const history = useHistory();
+    const { setUser } = useContext(UserContext)
     const [success, setSuccess] = useState(false)
     const [showError, setShowError] = useState(false);
 
     async function submit(values) {
         setShowError(false);
         const login = await UserService.login(values)
-
-        if (login.status === 200) {
-            const json = await login.json()
-           await Cookies.set('instagram-user', json.token, { expires: 30 });
-           console.log(Cookies)
-            setSuccess(true);
-            setTimeout(() => {
-                history.push('/');
-            }, 2000);
-          
+        if (login.status !== 200) {
+            setShowError(true);
             return;
         }
-        setShowError(true);
+        const json = await login.json()
+        Cookies.set('instagram-user', json.token, { expires: 30 });
+        setSuccess(true);
+        const user = await UserService.me();
+      
+
+        setTimeout(() => {
+            setUser(user)
+            history.push('/');
+           
+           
+        }, 2000)
+
     }
 
 
     return (
-        <div className="container">
-            <span className="moments">Moments That Count</span>
-            <div className="Login container">
-
-
-                <h2 className="mb-4">Login</h2>
+        <div className="Login container">
+            <span className="moments mr5">Instagram</span>
+            <div className="Login-form d-flex flex-nowrap">
+                <h1 className="mb-4 align-self-center">Login</h1>
                 {showError && <div className="alert alert-danger">
                     incorrect username or password
             </div>}
@@ -63,15 +71,16 @@ function Login() {
                         </div>
                         <div className="form-group ">
                             {success ? <div className="alert alert-success" role="alert">Success! please wait ...</div> :
-                                <button type="submit" className="btn btn-primary">Login</button>}
+                                <button type="submit" className="btn btn-primary btn-lg btn-block">Login</button>}
                         </div>
                         <hr className="mt-4" />
-                        <p>don't have an account? <Link to='/Register'>Register</Link></p>
+                        <p className="d-flex flex-nowrap">don't have an account? &nbsp;<Link to='/register'> Register</Link></p>
 
                     </Form>
                 </Formik>
-                <Animation />
+                
             </div>
+            <Animation />
         </div>
     )
 }

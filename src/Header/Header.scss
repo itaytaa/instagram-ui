@@ -1,9 +1,26 @@
-.Header{
-    background-color: rgb(186, 218, 253);
-    font-family: 'Cookie', cursive;
-    // margin-bottom: 50px;
+.Header {
+    background: rgb(255, 255, 255);
+    position: sticky;
+bottom: 0;
+    width: 100%;
+    // border-top: 1px solid rgb(109, 108, 108);
+    border-bottom: 0px;
+    order: 1;
+    z-index: 100;
 }
-.Header h1{
-    font-size: 60px;
-   margin-left:20px;
+@media screen and (min-width: 600px) {
+    .Header {
+        position: sticky;
+        top: 0;
+        order: 0;
+        // border-bottom: 1px solid rgb(109, 108, 108);
+        border-top: 0px;
+    }
+}
+
+.navbar-brand {
+    font-size: 45px;
+    font-family: "Cookie", cursive;
+    padding: 0px;
+    // height:50px;
 }

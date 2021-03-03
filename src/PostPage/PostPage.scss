@@ -1,0 +1,27 @@
+.post-pic {
+ width:100%;
+ margin:10px 0px 10px 0px;
+}
+
+.singlePost-container {
+display: flex;
+
+    width: 80vh;
+    height: 80vh;
+}
+.caption {
+    font-size: 1em;
+}
+.name {
+    font-family: sans-serif;
+    font-weight: 800;
+ 
+}
+.post-date a {
+    text-decoration: none;
+    font-size: 13px;
+}
+.PostPage{
+    display: flex;
+justify-content: center;
+}

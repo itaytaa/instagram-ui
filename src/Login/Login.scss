@@ -1,15 +1,22 @@
-.Login {
+.Login-form {
     font-family: "Poppins", sans-serif;
-    width: 280px;
+  
     padding: 20px;
     box-shadow: 1px 1px 47px -14px rgba(0, 0, 0, 0.75);
     color: rgb(77, 74, 74);
     margin-top: 50px;
     animation: fadeIn ease 1.5s;
+ 
+    flex-direction: column;
+}
+.Login{
+ 
+    flex-direction: column;
 }
 .moments{
+    margin:10px;
     font-family:'Cookie', cursive ;
-    font-size: 50px;
+    font-size: 70px;
     animation: fadeIn ease 2.5s;
 }
 @keyframes fadeIn {
@@ -22,7 +29,5 @@
     .Login{
         width: 350px;
     }
-    .form-control {
-        width: 300px;
-    }
+  
 }

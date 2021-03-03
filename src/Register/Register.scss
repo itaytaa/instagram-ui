@@ -1,13 +1,15 @@
 html {
-    height: 100%;
+    // height: 100%;
     background-color: #fafafa;
 }
 .Register {
     font-family: "Poppins", sans-serif;
-   margin-top: 50px;
     padding: 20px;
     box-shadow: 1px 1px 47px -14px rgba(0, 0, 0, 0.75);
     color: rgb(77, 74, 74);
+    margin-top: 50px;
+    animation: fadeIn ease 1.5s;
+    flex-direction: column;
 }
 .btn{
     width:100%;
@@ -21,7 +23,7 @@ html {
 }
 .form-text {
     font-size: 13px;
-    white-space: initial;
+    // white-space: initial;
 }
 @media only screen and (min-width: 600px) {
     .Register {

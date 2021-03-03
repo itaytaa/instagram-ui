@@ -10,9 +10,9 @@
 .pic1 {
     position: absolute;
     animation-name: example1;
-    animation-duration:3s;
-    left: 220px;
-    top: 0px;
+    animation-duration: 3s;
+    left: 420px;
+    top: -100px;
     z-index: 2;
     transform: rotate(-10deg);
 }
@@ -20,8 +20,8 @@
     position: absolute;
     animation-name: example2;
     animation-duration: 5s;
-    left: -600px;
-    top: -180px;
+    left: -300px;
+    top: -300px;
     z-index: 1;
     transform: rotate(-20deg);
 }
@@ -29,11 +29,10 @@
     position: absolute;
     animation-name: example3;
     animation-duration: 6s;
-    left: 250px;
-    top: -200px;
+    left: 350px;
+    top: -300px;
     z-index: 1;
     transform: rotate(20deg);
- 
 }
 
 @keyframes example1 {
@@ -44,15 +43,16 @@
         opacity: 0;
     }
 
-      50%   {
-          left:200px; 
-          top:600px; 
-          transform: rotate(0deg);
-          opacity: 0;}
+    50% {
+        left: 200px;
+        top: 600px;
+        transform: rotate(0deg);
+        opacity: 0;
+    }
 
     100% {
-        left: 220px;
-        top: 0px;
+        left: 420px;
+        top: -100px;
         transform: rotate(-10deg);
         opacity: 1;
     }
@@ -74,16 +74,15 @@
     }
 
     100% {
-        left: -600px;
-        top: -180px;
+        left: -300px;
+        top: -300px;
         transform: rotate(-20deg);
-        opacity:1;
+        opacity: 1;
     }
 }
 
 @keyframes example3 {
     0% {
-
         left: 300px;
         top: 400px;
         transform: rotate(0deg);
@@ -97,8 +96,8 @@
     }
 
     100% {
-        left: 250px;
-        top: -200px;
+        left: 350px;
+        top: -300px;
         transform: rotate(20deg);
         opacity: 1;
     }

@@ -1,14 +1,26 @@
-body,html,.App,#root {
-  background-color: #fafafa;
-  height:100%;
+body,
+html,
+.App,
+// .App-container,
+.app-container,
+#root {
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
 }
 
-.container {
-  display: flex;
+@media screen and (min-width: 600px) {
+ 
+  .app-container,.App-container{
+
+    height: auto;
+    background-color: #eeecec;
+  }
+}
+.App-container {
+  background-color: #eeecec;
+}
+
+.App {
+  // display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  // height:100%;
 }
-
-
