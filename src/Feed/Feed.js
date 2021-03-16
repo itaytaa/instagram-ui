@@ -10,7 +10,6 @@ function Feed() {
             try {
                 const posts = await PostService.feed()
                 setPosts(posts)
-                console.log(posts)
             } catch (err) {
                 console.log(err)
             }
@@ -20,9 +19,11 @@ function Feed() {
 
 
     return (
-        <div className="Feed mt-md-5">
-            
-            {posts.map((post, index) => <Post key={post._id} data={post} />)}
+        <div className="Feed mt-md-5 ">
+            {posts.map((post)=><Post key={post._id} post={post} />
+              
+            )}
+
         </div>
     )
 }

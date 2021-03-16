@@ -9,7 +9,7 @@ export class UserService {
     }
 
     static async me() {
-        const res = await fetch(enviroment.apiUrl+'/user/me', {
+        const res = await fetch(enviroment.apiUrl + '/user/me', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export class UserService {
 
     static register(values) {
         console.log(values)
-        return fetch(enviroment.apiUrl+'/user', {
+        return fetch(enviroment.apiUrl + '/user', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ export class UserService {
     }
 
     static login(values) {
-        return fetch(enviroment.apiUrl+'/user/login', {
+        return fetch(enviroment.apiUrl + '/user/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,7 +54,16 @@ export class UserService {
         return res.json()
 
     }
-    
+
+    static async search(username) {
+        const res = await fetch(enviroment.apiUrl + `/user?username=${username}`, {
+            headers: {
+                Authorization: UserService.getToken()
+            }
+        });
+        return res.json()
+    }
+
 
 
 

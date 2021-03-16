@@ -1,0 +1,16 @@
+.SearchResult {
+//  font-size: 0.5rem;
+    padding: 15px;
+ 
+}
+.search-result-box {
+ margin:0 auto
+}
+.SearchResult-link {
+    text-decoration: none;
+    color: black;
+}
+.SearchResult:hover {
+    color: black;
+    box-shadow: -5px -1px 66px -11px rgba(0, 0, 0, 0.21) inset;
+}

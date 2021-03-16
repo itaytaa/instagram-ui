@@ -12,6 +12,9 @@ import PostCreate from './PostCreate/PostCreate';
 import { withRouter } from 'react-router'
 import PostPage from './PostPage/PostPage';
 import Profile from './Profile/Profile';
+import Search from './Search/Search';
+import ProfileEdit from './ProfileEdit/ProfileEdit';
+
 
 
 
@@ -49,9 +52,11 @@ function App({ location }) {
 
         {!urlPathes.includes(location.pathname) && isLogged() && <Header />}
 
-        <div className="container App-container flex-grow-1">
+        <div className="container App-container ">
           <Switch>
-          
+          {/* <Route path="/post/:id/like">
+              <PostLike/>
+            </Route> */}
             <Route path="/register">
               <Register />
             </Route>
@@ -62,10 +67,16 @@ function App({ location }) {
               <PostCreate />
             </Route>
             <Route path="/post/:id" >
-              <PostPage/>
+              <PostPage />
             </Route>
             <Route path="/profile/:username">
               <Profile />
+            </Route>
+            <Route path="/search">
+              <Search />
+            </Route>
+            <Route path="/ProfileEdit">
+              <ProfileEdit/>
             </Route>
             <Route path="/" >
               <Feed />

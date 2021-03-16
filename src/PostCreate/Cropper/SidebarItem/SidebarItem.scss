@@ -1,0 +1,15 @@
+.SidebarItem {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: background-color 150ms;
+}
+.SidebarItem:hover,
+.SidebarItem:focus {
+    background-color: rgb(230, 206, 174);
+}
+
+.active {
+    background-color: rgb(247, 186, 108);
+}
+

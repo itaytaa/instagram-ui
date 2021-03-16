@@ -1,19 +1,19 @@
 body,
 html,
 .App,
-// .App-container,
-.app-container,
+.App-container,
 #root {
-  height: 100vh;
-  font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #eeecec;
 }
 
 @media screen and (min-width: 600px) {
  
   .app-container,.App-container{
 
-    height: auto;
-    background-color: #eeecec;
+
+  
   }
 }
 .App-container {

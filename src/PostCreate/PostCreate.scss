@@ -4,30 +4,36 @@
     width: 100%;
     align-items: center;
 
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .PostCreate .title {
     font-family: "Roboto", sans-serif;
 }
-.chooseButton {
-    width: 150px;
+.button-label {
+    border: 1px solid black;
+    border-radius: 5px;
     font-size: 15px;
+    padding: 10px;
+    background: rgb(88, 88, 88);
+    color: white;
+    margin: 5px;
 }
-.chosenImage {
-width:300px;
-height:300px;
-object-fit: fill;
+.button-label:hover {
+    background: rgb(209, 207, 207);
+}
 
-    align-self: center;
+.chosenImage {
+    width: 350px;
+    height: 350px;
+    object-fit: scale-down;
 }
 
 .form {
     // box-sizing: content-box;
     align-items: center;
     justify-content: center;
-// height:100vh;
-    
+    // height:100vh;
 }
 .submit-btn {
     background: none;

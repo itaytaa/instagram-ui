@@ -5,9 +5,8 @@
 
 .singlePost-container {
 display: flex;
+flex-direction: column;
 
-    width: 80vh;
-    height: 80vh;
 }
 .caption {
     font-size: 1em;
@@ -24,4 +23,15 @@ display: flex;
 .PostPage{
     display: flex;
 justify-content: center;
+flex-direction: column;
+overflow: hidden;
+}
+
+@media only screen and (min-width: 600px) {
+    .PostPage{
+    flex-direction: row;
+    }
+    .comments-section{
+        width:40%
+    }
 }
