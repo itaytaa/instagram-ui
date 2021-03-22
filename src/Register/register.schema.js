@@ -9,7 +9,7 @@ export const registerSchema = yup.object().shape({
         .required()
         .test('checkUsernameUnique', 'This Username is already registered.', (value) => {
             return new Promise((resolve, reject) => {
-                fetch(`${environment}/is-username-unique/${value}`)
+                fetch(`${environment.apiUrl}/is-username-unique/${value}`)
                     .then(res => res.json())
                     .then((res) => {
                         // exists
@@ -26,7 +26,7 @@ export const registerSchema = yup.object().shape({
         .required()
         .test('checkEmailUnique', 'This email is already registered.', (value) => {
             return new Promise((resolve, reject) => {
-                fetch(`${environment}/user/is-email-unique/${value}`)
+                fetch(`${environment.apiUrl}/user/is-email-unique/${value}`)
                     .then(res => res.json())
                     .then((res) => {
                         // exists
