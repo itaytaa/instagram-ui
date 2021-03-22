@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-
+import environment from '../environments/index'
 
 
 export const registerSchema = yup.object().shape({
@@ -9,7 +9,7 @@ export const registerSchema = yup.object().shape({
         .required()
         .test('checkUsernameUnique', 'This Username is already registered.', (value) => {
             return new Promise((resolve, reject) => {
-                fetch(`http://localhost:4000/user/is-username-unique/${value}`)
+                fetch(`${environment}/is-username-unique/${value}`)
                     .then(res => res.json())
                     .then((res) => {
                         // exists
@@ -26,7 +26,7 @@ export const registerSchema = yup.object().shape({
         .required()
         .test('checkEmailUnique', 'This email is already registered.', (value) => {
             return new Promise((resolve, reject) => {
-                fetch(`http://localhost:4000/user/is-email-unique/${value}`)
+                fetch(`/user/is-email-unique/${value}`)
                     .then(res => res.json())
                     .then((res) => {
                         // exists
