@@ -26,7 +26,7 @@ export const registerSchema = yup.object().shape({
         .required()
         .test('checkEmailUnique', 'This email is already registered.', (value) => {
             return new Promise((resolve, reject) => {
-                fetch(`/user/is-email-unique/${value}`)
+                fetch(`${environment}/user/is-email-unique/${value}`)
                     .then(res => res.json())
                     .then((res) => {
                         // exists
