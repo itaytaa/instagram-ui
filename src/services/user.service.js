@@ -16,6 +16,7 @@ export class UserService {
                 Authorization: UserService.getToken()
             },
         })
+
         if (res.status !== 200) {
             return null;
         }
@@ -61,14 +62,50 @@ export class UserService {
                 Authorization: UserService.getToken()
             }
         });
+        console.log(res)
         return res.json()
     }
 
 
+    static async edit(values, userId) {
+        const data = new FormData();
+        if (values.image) {
+            data.append('image', values.image);
+        }
+        data.append('username', values.username);
+        data.append('email', values.email);
+        data.append('bio', values.bio);
+        const res = await fetch(enviroment.apiUrl + `/user/edit/${userId}`, {
+            method: 'POST',
+            headers: {
+                Authorization: UserService.getToken()
+            },
+            body: data
+        })
+        return res.json()
+    }
 
 
+    static async follow(id) {
+        const res = await fetch(enviroment.apiUrl + `/user/${id}/follow`, {
+            method: 'POST',
+            headers: {
+                Authorization: UserService.getToken()
+            }
+        })
+        return res.json()
 
+    }
+    static async unFollow(id) {
+        const res = await fetch(enviroment.apiUrl + `/user/${id}/unFollow`, {
+            method: 'POST',
+            headers: {
+                Authorization: UserService.getToken()
+            }
+        })
+        return res.json()
 
+    }
 
 }
 

@@ -10,6 +10,7 @@ html {
     margin-top: 50px;
     animation: fadeIn ease 1.5s;
     flex-direction: column;
+    background-color:rgb(231, 232, 235)
 }
 .btn{
     width:100%;
@@ -23,7 +24,11 @@ html {
 }
 .form-text {
     font-size: 13px;
-    // white-space: initial;
+
+}
+.moments{
+width:220px;
+
 }
 @media only screen and (min-width: 600px) {
     .Register {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import './PostPage.scss'
 import { PostService } from '../services/post.services';
 import Avatar from '../Common/Avatar/Avatar';
@@ -10,29 +10,28 @@ import Comments from '../Common/Comments/Comments';
 
 
 
-function PostPage() {
-    window.scrollTo(0, 0)
-    const { id } = useParams()
 
+function PostPage() {
+    const [isClicked, setIsClicked] = useState(false)
+    const { id } = useParams()
     const [post, setPost] = useState(null)
 
+    function dClickLike() {
+        if (!isClicked) {
+            setIsClicked(true)
+        }
+    }
     useEffect(() => {
-        // console.log(post)
         async function getPost() {
-
             try {
                 const p = await PostService.getPost(id)
-                if (p) {
-                    setPost(p)
-                } else {
-                    console.log('not found')
-                }
+                p ? setPost(p) : console.log('not found')
             } catch (err) {
-
+                console.log(err)
             }
         }
         getPost()
-        window.scrollTo(0, 0)
+        window.scroll(0,0)
     }, [id])
 
 
@@ -41,28 +40,26 @@ function PostPage() {
         <div className="PostPage mt-3  p-2">
             {post && (
                 <div style={{ margin: "10px " }} className="singlePost-container d-flex flex-column" >
-                    <div><Avatar size="md" username={post.user.username} /><span className="name"> {post.user.username}</span> </div>
-                    <div className="d-flex justify-content-center"><img src={'data:;base64,' + post.image} className="post-pic" alt="singlePost-Img" /></div>
+                  <Link to={`/Profile/${post.user.username}`}>
+                    <div>
+                        <Avatar size="md" username={post.user.username} image={post.user.avatar} />
+                        <span className="name"> {post.user.username}</span>
+                    </div>
+                    </Link>
+                 
+                    <div className="d-flex justify-content-center">
+                        <img src={'data:;base64,' + post.image} className="post-pic" alt="singlePost-Img" onDoubleClick={dClickLike} />
+                    </div>
                     <div className="caption">{post.description}</div>
-                    <PostLike post={post} />
+                    <PostLike post={post} isDbLike={isClicked} setIsClicked={setIsClicked} />
                     <div className="post-date"><Moment fromNow="YYYY/MM/DD">{post.createdAt}</Moment></div>
-
+                    <hr/>
                 </div>
 
-
-
-
-            )
-
-            }
-
+            )}
             {post && <div className="comments-section mb-5"><Comments postId={post._id} /></div>}
-
-
-
         </div>
     )
-
 }
 
 export default PostPage

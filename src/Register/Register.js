@@ -30,6 +30,7 @@ function Register() {
 
     return (
         <div className="Register container" >
+                <div className="moments ">Instagram</div>
             <h2 className="text-center">Sign Up!</h2>
             <Formik
                 initialValues={{ username: '', email: '', password: '', confirm_password: '', agreeToTerms: false }}

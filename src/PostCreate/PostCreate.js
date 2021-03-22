@@ -6,29 +6,26 @@ import environment from '../environments/index';
 import { useHistory } from 'react-router-dom'
 import { UserService } from '../services/user.service';
 import ImageCropper from './Cropper/ImageCropper'
-let photo;
+
 
 
 function PostCreate() {
-
+   
     const history = useHistory()
     const [chosenFile, setChosenFile] = useState('')
     const realButton = useRef(null);
     const [editedImage, setEdited] = useState('')
     const [changed, setChanged] = useState(false);
-const[style, setStyle]  = useState({})
+
 
 
     async function submit(values) {
-
+        console.log(values)
         const image = await fetch(editedImage)
-
         const newImage = await image.blob()
-        console.log(newImage)
         const data = new FormData()
         data.append('image', newImage)
         data.append('description', values.description)
-
         try {
             await fetch(environment.apiUrl + '/post', {
                 method: 'PUT',
@@ -41,16 +38,13 @@ const[style, setStyle]  = useState({})
         } catch (err) {
             console.log(err)
         }
-        console.log(data)
-
     }
 
     useEffect(() => {
+      
         setChanged(true)
+        
     }, [chosenFile])
-
-
-console.log(chosenFile)
 
     return (
         <div className="PostCreate">
@@ -70,10 +64,10 @@ console.log(chosenFile)
                         <div className=" button-label form-group">
                             <label htmlFor="input" >CHOOSE A FILE</label>
                         </div>
-                        { chosenFile && changed && <ImageCropper src={chosenFile} edited={(image, style) => { 
-                           
-                            setEdited(image) 
-                            }}    />}
+                        { chosenFile && changed && <ImageCropper src={chosenFile} edited={(image) => {
+
+                            setEdited(image)
+                        }} />}
                         <div className="form-group d-flex flex-column w-100">
 
                             <div className="form-group my-3 d-flex align-items-end justify-content-between">

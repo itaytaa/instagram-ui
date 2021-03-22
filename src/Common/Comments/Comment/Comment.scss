@@ -1,8 +1,27 @@
-.comment-div{
-
-    border:1px solid gray;
+.comment-div {
+    background-color: rgb(249, 251, 252);
+    max-width: 650px;
     border-radius: 5px;
 }
-.timeOfPost{
+.timeOfPost {
     font-size: 12px;
+    float: right;
+
+}
+.comment-username {
+    display: inline;
+    font-weight: 600;
+}
+.comment-box {
+    width: 100%;
+    border-radius: 25px;
+}
+.m-0 {
+    word-break: break-word;
+}
+.deleteComment{
+    border:0px;
+    background-color: rgb(202, 217, 245);
+font-size: 15px;
+   margin-left:auto;
 }

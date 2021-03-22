@@ -4,7 +4,7 @@ import Cropper from 'cropperjs'
 import "cropperjs/dist/cropper.min.css"
 import SidebarItem from './SidebarItem/SidebarItem';
 import Slider from './Slider/Slider';
-let canvas;
+let ctx;
 
 const DEFAULT_OPTIONS = [
     {
@@ -81,8 +81,9 @@ const DEFAULT_OPTIONS = [
 ]
 
 
-function ImageCropper({ src, edited }) {
+function ImageCropper({ src, edited, isAvatar }) {
 
+    // const canvasRef = useRef()
 
     const [selectedOptionIndex, setSelectedOptionIndex] = useState(0)
     const [options, setOptions] = useState(DEFAULT_OPTIONS)
@@ -90,7 +91,7 @@ function ImageCropper({ src, edited }) {
     const [imageDestination, setImageDestination] = useState('')
     const imageElement = useRef()
     const styledImage = useRef()
-    // const [style, setStyle] = useState(null)
+
 
     function handleSliderChange({ target }) {
         setOptions(prevOptions => {
@@ -113,7 +114,7 @@ function ImageCropper({ src, edited }) {
 
 
     async function edit() {
-    console.log('changed')
+
         try {
             const cropper = new Cropper(imageElement.current, {
                 viewMode: 0,
@@ -123,24 +124,29 @@ function ImageCropper({ src, edited }) {
                 scalable: false,
                 rotatable: true,
                 aspectRatio: 1 / 1,
-    
                 highlight: true,
-                dragMode: 'move',
                 cropBoxMovable: true,
-             
-                crop: () => {
-                    canvas = cropper.getCroppedCanvas( {width: 1000,
-                        height: 1000})
 
+                crop:() => {
+
+                    const canvas = cropper.getCroppedCanvas({
+                        width: 1000,
+                        height: 1000
+                    })
+                    canvas.fillStyle =getImageStyle()
+                    //   heroImage.style.zIndex = "5";
                     setImageDestination(canvas.toDataURL("image/png"))
-
+                    // ctx = canvasRef.current.getContext('2d')
+                    // const imageObj1 = new Image();
+                    // imageObj1.src = imageDestination
+                    // ctx.drawImage(imageObj1, 0, 0, 250, 250);
+                    // edited(ctx)
                 },
-                rotate:()=>{
 
-                }
             })
 
-            edited(imageDestination, getImageStyle())
+
+            edited(imageDestination)
         } catch (err) {
             console.log(err)
         }
@@ -148,8 +154,14 @@ function ImageCropper({ src, edited }) {
 
 
     useEffect(() => {
+        // const ctx = canvasRef.current.getContext('2d')
+        // const imageObj1 = new Image();
+        // imageObj1.src = imageDestination
+        // ctx.drawImage(imageObj1, 0, 0, 250, 250);
+
         edit()
-    }, [imageDestination,src])
+
+    }, [imageDestination])
 
 
 
@@ -158,15 +170,17 @@ function ImageCropper({ src, edited }) {
             <div className="img-container">
                 <img ref={imageElement} src={src} alt="source" style={getImageStyle()} />
             </div>
-            <Slider
+            {isAvatar || <Slider
                 min={selectedOption.range.min}
                 max={selectedOption.range.max}
                 value={selectedOption.value}
                 handleChange={handleSliderChange}
-            />
+            />}
             <div className="d-flex align-items-center">
-                <img className="img-preview mt-2 " src={imageDestination} alt="Destination" style={getImageStyle()} ref={styledImage} />
-                <div className="d-flex flex-column mx-1">
+
+                {/* <canvas ref={canvasRef} width="250px" height="250px" style={getImageStyle()} ></canvas> */}
+                {isAvatar || <img className="img-preview mt-2 " src={imageDestination} alt="Destination" style={getImageStyle()} ref={styledImage} />}
+                {isAvatar || <div className="d-flex flex-column mx-1">
                     {options.map((option, index) => {
                         return (
                             <SidebarItem
@@ -179,7 +193,7 @@ function ImageCropper({ src, edited }) {
                             />
                         )
                     })}
-                </div>
+                </div>}
             </div>
         </div>
     )

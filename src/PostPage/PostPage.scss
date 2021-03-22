@@ -11,13 +11,13 @@ flex-direction: column;
 .caption {
     font-size: 1em;
 }
-.name {
+.singlePost-container a{
     font-family: sans-serif;
     font-weight: 800;
- 
+    text-decoration: none !important;
 }
 .post-date a {
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: 13px;
 }
 .PostPage{
@@ -27,11 +27,11 @@ flex-direction: column;
 overflow: hidden;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 850px) {
     .PostPage{
     flex-direction: row;
     }
     .comments-section{
-        width:40%
+        width:60%
     }
 }

@@ -10,7 +10,7 @@ import 'moment-timezone';
 function SearchResult({ user }) {
 
     return (
-        <div className="SearchResult col-lg-4">
+        <div className="SearchResult ">
             <Link to={'/profile/' + user.username} className="SearchResult-link" >
                 <div className="d-flex align-items-center">
                     <Avatar image={user.avatar} size="md" alt="" />
@@ -20,8 +20,6 @@ function SearchResult({ user }) {
                         <p className="my-0">  joined on <Moment format="DD/MM/YY">{user.createdAt}</Moment></p>
                     </div>
                 </div>
-
-
             </Link>
         </div>
 

@@ -17,9 +17,6 @@ import { UserContext } from '../user-context';
 
 function Login() {
 
-   
-
-
     const history = useHistory();
     const { setUser } = useContext(UserContext)
     const [success, setSuccess] = useState(false)
@@ -36,15 +33,10 @@ function Login() {
         Cookies.set('instagram-user', json.token, { expires: 30 });
         setSuccess(true);
         const user = await UserService.me();
-      
-
         setTimeout(() => {
             setUser(user)
-            history.push('/');
-           
-           
+            history.push('/'); 
         }, 2000)
-
     }
 
 
