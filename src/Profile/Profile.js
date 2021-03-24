@@ -24,7 +24,6 @@ function Profile() {
     }, [username])
 
 
-console.log(username)
 
     return (
         <div className="Profile">

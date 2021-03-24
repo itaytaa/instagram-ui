@@ -19,7 +19,7 @@ function Feed() {
 
 
     return (
-        <div className="Feed mt-md-5 px-lg-5">
+        <div className="Feed  px-lg-5">
             {posts.map((post)=><Post key={post._id} post={post} />
               
             )}

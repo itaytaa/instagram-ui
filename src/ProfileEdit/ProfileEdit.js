@@ -19,7 +19,7 @@ function ProfileEdit() {
     const history = useHistory()
     const [chosenFile, setChosenFile] = useState('')
     const { user, setUser } = useContext(UserContext)
-    // const [success, setSuccess] = useState(false)
+
     const [editedImage, setEdited] = useState('')
     const [changed, setChanged] = useState(false);
 
@@ -41,7 +41,7 @@ function ProfileEdit() {
         try {
             const newUser = await UserService.edit(values, user._id)
             setUser(newUser)
-            history.push('/')
+            history.push(`/Profile/${user.username}`)
         } catch (err) {
             console.log(err)
         }
@@ -103,7 +103,7 @@ function ProfileEdit() {
                             </div>
                             <div className="form-group mb-3 " >
                                 <label htmlFor="bio">Bio</label>
-                                <Field id="bio" name="bio" className="form-control" type="text" placeholder={`Tell us a little about ${user.username}`} />
+                                <Field id="bio" name="bio" className="form-control" type="text" placeholder={user.bio} />
                                 <ErrorMessage className="error" name="bio" component="div" />
                             </div>
 

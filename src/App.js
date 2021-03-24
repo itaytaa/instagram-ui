@@ -54,9 +54,6 @@ function App({ location }) {
 
         <div className="container App-container ">
           <Switch>
-          {/* <Route path="/post/:id/like">
-              <PostLike/>
-            </Route> */}
             <Route path="/register">
               <Register />
             </Route>

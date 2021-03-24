@@ -44,8 +44,8 @@ function ProfileHeader({ username, postNum }) {
     function isMe() {
         return profileUser._id !== user._id
     }
-    
-    function amIFollowing(){
+
+    function amIFollowing() {
         return (profileUser.followers && profileUser.followers.includes(user._id) ? "Unfollow" : "Follow")
     }
 
@@ -54,12 +54,17 @@ function ProfileHeader({ username, postNum }) {
         <div className="ProfileHeader">
             <div>
                 <h2 className="m-3">{profileUser.username}</h2>
-                <span className="m-2"><Avatar image={profileUser.avatar} size="lg" username={username} /></span>
-                <span className="posts-number m-2">{postNum} Posts </span>
-                {/* <span className="posts-number m-3">{profileUser.followers.length} Followers </span>      ERROR: LENGTH OF UNDEFINED   */}
-                <span className="posts-number mr-2">{profileUser.followers ? profileUser.followers.length : 0} Followers </span>
-                {isMe() && <button className="isFollowingButton" onClick={toggleFollow}>{amIFollowing()}</button>}
+
+                <span className="m-2"><Avatar image={profileUser.avatar} size="lg" username={username} />
+                    {isMe() && <button className="" onClick={toggleFollow} className={profileUser.followers && profileUser.followers.includes(user._id) ? " isFollowingButton following mx-4" : "isFollowingButton notFollowing mx-4"}>{amIFollowing()}</button>}</span>
+                <div>
+                    <span className="posts-number m-2">{postNum} Posts </span>
+                    <span className="posts-number mr-2">{profileUser.followers ? profileUser.followers.length : 0} Followers </span>
+                </div>
+
+
             </div>
+
             <p className="bio my-3"> {profileUser.bio}</p>
         </div>
     )

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, {useContext } from 'react'
 import Avatar from '../../Avatar/Avatar'
 import Moment from 'react-moment';
 import './Comment.scss';
@@ -13,8 +13,7 @@ import { FaTrashAlt } from "react-icons/fa";
 
 function Comment({ comment, setIsChanged }) {
     const { user } = useContext(UserContext)
-    console.log(comment)
-    const [isDeleted, setIsDeleted] = useState(false)
+
 
 
     async function removeComment() {

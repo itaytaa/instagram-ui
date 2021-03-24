@@ -12,6 +12,7 @@ export const registerSchema = yup.object().shape({
                 fetch(`${environment.apiUrl}/is-username-unique/${value}`)
                     .then(res => res.json())
                     .then((res) => {
+                        console.log(res)
                         // exists
                         resolve(res)
                     }).catch((res) => {

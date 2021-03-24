@@ -1,7 +1,7 @@
 
 import './CommentLike.scss'
 
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState,useContext } from 'react'
 import { PostService } from '../../../services/post.services';
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { UserContext } from '../../../user-context'

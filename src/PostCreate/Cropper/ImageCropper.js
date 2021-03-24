@@ -4,7 +4,7 @@ import Cropper from 'cropperjs'
 import "cropperjs/dist/cropper.min.css"
 import SidebarItem from './SidebarItem/SidebarItem';
 import Slider from './Slider/Slider';
-let ctx;
+// let ctx;
 
 const DEFAULT_OPTIONS = [
     {

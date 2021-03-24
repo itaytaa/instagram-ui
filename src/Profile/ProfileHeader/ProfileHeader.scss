@@ -1,5 +1,12 @@
-.isFollowingButton{
+.isFollowingButton {
+    border: 0px solid gray;
+}
 
-    border:1px solid gray;
-    
+.following {
+background-color: rgb(182, 199, 230);
+
+}
+.notFollowing{
+    background-color: rgb(120, 149, 202);
+    color:white
 }
