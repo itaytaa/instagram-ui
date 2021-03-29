@@ -28,9 +28,6 @@ function Comments({ postId }) {
         setComments([...comments, comment])
         window.scrollTo(0, document.body.scrollHeight)
     }
-    // function deleteComment(comment) {
-    //     setComments([comment,...comments])
-    // }
 
     return (
 

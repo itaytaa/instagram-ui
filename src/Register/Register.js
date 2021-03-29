@@ -29,8 +29,9 @@ function Register() {
 
 
     return (
+        <div>
         <div className="Register container" >
-                <div className="moments ">Instagram</div>
+             
             <h2 className="text-center">Sign Up!</h2>
             <Formik
                 initialValues={{ username: '', email: '', password: '', confirm_password: '', agreeToTerms: false }}
@@ -72,8 +73,11 @@ function Register() {
                     <p>already have an account? <Link to='./login'>Login</Link></p>
                 </Form>
             </Formik>
-            <Animation />
 
+         
+
+        </div>
+        <Animation />
         </div>
     )
 }

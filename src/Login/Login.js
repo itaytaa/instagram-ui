@@ -35,14 +35,16 @@ function Login() {
         const user = await UserService.me();
         setTimeout(() => {
             setUser(user)
-            history.push('/'); 
+            history.push('/');
         }, 2000)
     }
 
 
     return (
         <div className="Login container">
-            <span className="moments mr5">Instagram</span>
+            <div className="d-flex">
+                <span className="moments ">Instagram</span>
+            </div>
             <div className="Login-form d-flex flex-nowrap">
                 <h1 className="mb-4 align-self-center">Login</h1>
                 {showError && <div className="alert alert-danger">
@@ -70,7 +72,7 @@ function Login() {
 
                     </Form>
                 </Formik>
-                
+
             </div>
             <Animation />
         </div>
