@@ -47,7 +47,7 @@ function PostPage() {
                     </div>
                     </Link>
                  
-                    <div className="d-flex justify-content-center">
+                    <div className="d-flex flex-column justify-content-center">
                         <img src={'data:;base64,' + post.image} className="post-pic" alt="singlePost-Img" onDoubleClick={dClickLike} />
                     </div>
                     <div className="caption">{post.description}</div>
