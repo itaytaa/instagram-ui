@@ -29,7 +29,8 @@ function Register() {
 
 
     return (
-        <div>
+      
+           <div>
         <div className="Register container" >
              
             <h2 className="text-center">Sign Up!</h2>
@@ -77,7 +78,7 @@ function Register() {
          
 
         </div>
-        <Animation />
+       
         </div>
     )
 }

@@ -42,7 +42,8 @@ function Login() {
 
     return (
         <div className="Login container">
-            <div className="d-flex">
+          
+            <div className="d-flex justify-content-center">
                 <span className="moments ">Instagram</span>
             </div>
             <div className="Login-form d-flex flex-nowrap">

@@ -12,7 +12,7 @@ function Menu() {
         Cookies.remove('instagram-user')
         window.location.reload(false);
     }
-
+  
 
     return (
         <ul className="navbar-nav d-flex flex-row">
@@ -27,7 +27,8 @@ function Menu() {
                 </Dropdown>
             </li>
             <li className="navbar-item ">
-                <Link to="/search" className="createIcon  mx-3">
+                <Link to="/search" data-toggle="tooltip" data-placement="bottom" title="search users" className="createIcon  mx-3">
+      
                     <FontAwesomeIcon icon={faSearch} />
                 </Link>
             </li>
