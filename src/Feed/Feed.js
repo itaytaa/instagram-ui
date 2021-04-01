@@ -23,7 +23,7 @@ function Feed() {
             {posts.length === 0 && <div className="feed-note">If your'e new here , Welcome! <br />
             You can upload photos by clicking on the + button,<br />
             Search for people to follow by clicking the search icon<br />
-             (Look for me by the name "itayT" and follow me!)<br />
+             (Look for me by the name "itay" and follow me!)<br />
             Edit your User by clicking "Edit user" <br />
             with the green button
             </div>}
