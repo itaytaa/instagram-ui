@@ -7,3 +7,14 @@ align-items: center;
 margin: auto;
 // width:50%
 }
+
+.feed-note{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(210, 220, 238);
+    line-height: 40px;
+    margin:50px;
+    padding:40px;
+    font-size: 16px;
+}
