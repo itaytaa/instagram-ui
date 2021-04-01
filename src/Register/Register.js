@@ -31,6 +31,8 @@ function Register() {
     return (
       
            <div>
+                           <div className="note">Create a User and try it out! <br/> you dont have to put  a real email address</div>
+
         <div className="Register container" >
              
             <h2 className="text-center">Sign Up!</h2>
